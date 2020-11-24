@@ -12,6 +12,16 @@
 
     <modules>
         <module>core</module>
+        <module>profiles</module>
+        <module>properties</module>
+        <module>aop</module>
+        <module>jmx</module>
+        <module>events</module>
+        <module>jms</module>
+        <module>spring-boot</module>
+        <module>mongo</module>
+        <module>db</module>
+        <module>cache</module>
     </modules>
 
     <properties>
