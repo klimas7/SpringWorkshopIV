@@ -19,15 +19,26 @@
         <java.version>13</java.version>
 
         <spring.version>5.2.11.RELEASE</spring.version>
+
+        <lombok.version>1.18.16</lombok.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <!-- Spring -->
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-context</artifactId>
                 <version>${spring.version}</version>
             </dependency>
+
+            <!-- other -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
