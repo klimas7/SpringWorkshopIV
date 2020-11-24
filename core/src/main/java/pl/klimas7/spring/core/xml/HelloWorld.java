@@ -1,4 +1,4 @@
-package pl.klimas7.spring.core;
+package pl.klimas7.spring.core.xml;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

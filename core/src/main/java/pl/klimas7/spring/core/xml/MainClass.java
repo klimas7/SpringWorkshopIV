@@ -1,4 +1,4 @@
-package pl.klimas7.spring.core;
+package pl.klimas7.spring.core.xml;
 
 public class MainClass {
     public static void main(String[] args) {
