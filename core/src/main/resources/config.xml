@@ -14,6 +14,7 @@
 
     <!-- Set value as constructor -->
     <bean id="helloWordConstructor" class="pl.klimas7.spring.core.xml.HelloWorld">
-        <constructor-arg value="Hello Sii People !! from constructor"/>
+        <constructor-arg value="Hello Sii People !! from constructor" index="1"/>
+        <constructor-arg value="Hello Sii People !! from constructor m2" index="0"/>
     </bean>
 </beans>
