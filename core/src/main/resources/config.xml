@@ -18,9 +18,9 @@
         <constructor-arg value="Hello Sii People !! from constructor m2" index="0"/>
     </bean>
 
-    <bean id="lazyWorker" class="pl.klimas7.spring.core.xml.LazyWorker" scope="prototype" />
-    <bean id="hardWorker" class="pl.klimas7.spring.core.xml.HardWorker"/> <!-- scope="singleton" -->
-    <bean id="bestWorker" class="pl.klimas7.spring.core.xml.HardWorker"/>
+    <bean id="lazyWorker" class="pl.klimas7.spring.core.xml.LazyWorker" scope="prototype" init-method="born"/>
+    <bean id="hardWorker" class="pl.klimas7.spring.core.xml.HardWorker" init-method="born"/> <!-- scope="singleton" -->
+    <bean id="bestWorker" class="pl.klimas7.spring.core.xml.HardWorker" init-method="born"/>
 
     <bean id="factory" class="pl.klimas7.spring.core.xml.Factory">
         <property name="workers">

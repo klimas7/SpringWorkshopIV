@@ -2,13 +2,19 @@ package pl.klimas7.spring.core.xml;
 
 import lombok.extern.java.Log;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 @Log
 public class MainClass {
+
+    static {
+        System.setProperty("java.util.logging.SimpleFormatter.format", "[%1$tF %1$tT] [%4$-7s] %5$s %n");
+    }
+
     public static void main(String[] args) {
 
-        ApplicationContext context = new ClassPathXmlApplicationContext("config.xml");
+        AbstractApplicationContext context = new ClassPathXmlApplicationContext("config.xml");
         //! FileSystemXmlApplicationContext
         log.info("After creating context");
 
@@ -38,6 +44,9 @@ public class MainClass {
         log.info("//-----------------");
         var factory = context.getBean("factory", Factory.class);
         factory.doWork();
+
+
+        context.close();
     }
 }
 
