@@ -18,11 +18,11 @@
         <constructor-arg value="Hello Sii People !! from constructor m2" index="0"/>
     </bean>
 
-    <bean id="lazyWorker" class="pl.klimas7.spring.core.xml.LazyWorker" scope="prototype" init-method="born"/>
-    <bean id="hardWorker" class="pl.klimas7.spring.core.xml.HardWorker" init-method="born"/> <!-- scope="singleton" -->
-    <bean id="bestWorker" class="pl.klimas7.spring.core.xml.HardWorker" init-method="born"/>
+    <bean id="lazyWorker" class="pl.klimas7.spring.core.xml.LazyWorker" scope="prototype" init-method="born" lazy-init="true"/>
+    <bean id="hardWorker" class="pl.klimas7.spring.core.xml.HardWorker" init-method="born" lazy-init="true"/> <!-- scope="singleton" -->
+    <bean id="bestWorker" class="pl.klimas7.spring.core.xml.HardWorker" init-method="born" lazy-init="true"/>
 
-    <bean id="factory" class="pl.klimas7.spring.core.xml.Factory">
+    <bean id="factory" class="pl.klimas7.spring.core.xml.Factory" lazy-init="true"> <!-- First not set lazy in factory -->
         <property name="workers">
             <list>
                 <ref bean="hardWorker"/>
@@ -35,4 +35,8 @@
         <property name="bestWorker" ref="bestWorker"/>
         <property name="theMostLazyWorker" ref="lazyWorker"/>
     </bean>
+
+    <!-- Scope 'AbstractBeanFactory -> doGetBean -> -->
+
+    <!-- Lazy DefaultListableBeanFactory.preInstantiateSingletons -->
 </beans>
