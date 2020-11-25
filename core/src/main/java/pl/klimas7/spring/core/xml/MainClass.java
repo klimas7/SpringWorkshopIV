@@ -25,6 +25,14 @@ public class MainClass {
         log.info("//-----------------");
         var helloWorld2 = (HelloWorld) context.getBean("helloWorld");
         helloWorld2.print();
+
+
+        log.info("//-----------------");
+        var helloWorldBySetter = (HelloWorld) context.getBean("helloWorldSetter");
+        helloWorldBySetter.print();
+
+        var helloWorldByConstructor = context.getBean("helloWordConstructor", HelloWorld.class);
+        helloWorldByConstructor.print();
     }
 }
 

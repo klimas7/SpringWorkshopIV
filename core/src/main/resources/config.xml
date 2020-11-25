@@ -6,4 +6,14 @@
     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
     <bean id="helloWorld" class="pl.klimas7.spring.core.xml.HelloWorld"/>
+
+    <!-- Set value by properties -->
+    <bean id="helloWorldSetter" class="pl.klimas7.spring.core.xml.HelloWorld">
+        <property name="message" value="Hello Sii People!!"/>
+    </bean>
+
+    <!-- Set value as constructor -->
+    <bean id="helloWordConstructor" class="pl.klimas7.spring.core.xml.HelloWorld">
+        <constructor-arg value="Hello Sii People !! from constructor"/>
+    </bean>
 </beans>
