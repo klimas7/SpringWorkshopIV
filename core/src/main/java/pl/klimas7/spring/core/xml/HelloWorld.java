@@ -2,9 +2,11 @@ package pl.klimas7.spring.core.xml;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @Data
+@NoArgsConstructor
 public class HelloWorld {
     private String message;
 
