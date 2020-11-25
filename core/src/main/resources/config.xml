@@ -19,7 +19,7 @@
     </bean>
 
     <bean id="lazyWorker" class="pl.klimas7.spring.core.xml.LazyWorker" scope="prototype" />
-    <bean id="hardWorker" class="pl.klimas7.spring.core.xml.HardWorker" scope="singleton" /> <!-- scope="singleton" -->
+    <bean id="hardWorker" class="pl.klimas7.spring.core.xml.HardWorker"/> <!-- scope="singleton" -->
     <bean id="bestWorker" class="pl.klimas7.spring.core.xml.HardWorker"/>
 
     <bean id="factory" class="pl.klimas7.spring.core.xml.Factory">
