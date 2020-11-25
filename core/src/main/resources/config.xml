@@ -17,4 +17,22 @@
         <constructor-arg value="Hello Sii People !! from constructor" index="1"/>
         <constructor-arg value="Hello Sii People !! from constructor m2" index="0"/>
     </bean>
+
+    <bean id="lazyWorker" class="pl.klimas7.spring.core.xml.LazyWorker" scope="prototype" />
+    <bean id="hardWorker" class="pl.klimas7.spring.core.xml.HardWorker" scope="singleton" /> <!-- scope="singleton" -->
+    <bean id="bestWorker" class="pl.klimas7.spring.core.xml.HardWorker"/>
+
+    <bean id="factory" class="pl.klimas7.spring.core.xml.Factory">
+        <property name="workers">
+            <list>
+                <ref bean="hardWorker"/>
+                <ref bean="lazyWorker"/>
+                <ref bean="lazyWorker"/>
+                <ref bean="hardWorker"/>
+                <null/>
+            </list>
+        </property>
+        <property name="bestWorker" ref="bestWorker"/>
+        <property name="theMostLazyWorker" ref="lazyWorker"/>
+    </bean>
 </beans>

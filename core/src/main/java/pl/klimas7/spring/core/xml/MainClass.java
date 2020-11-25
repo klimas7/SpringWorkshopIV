@@ -33,6 +33,11 @@ public class MainClass {
 
         var helloWorldByConstructor = context.getBean("helloWordConstructor", HelloWorld.class);
         helloWorldByConstructor.print();
+
+
+        log.info("//-----------------");
+        var factory = context.getBean("factory", Factory.class);
+        factory.doWork();
     }
 }
 
