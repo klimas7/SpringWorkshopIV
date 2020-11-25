@@ -1,16 +1,31 @@
 package pl.klimas7.spring.core.xml;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.extern.java.Log;
 
-@AllArgsConstructor
-@Data
-@NoArgsConstructor
+@Log
 public class HelloWorld {
     private String message;
 
+    public HelloWorld() {
+        log.info("In constructor");
+    }
+
+    public HelloWorld(String message) {
+        this.message = message;
+        log.info("In constructor: " + message);
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+        log.info("In setter: " + message);
+    }
+
+
     public void print() {
-        System.out.println("Your message: " + message);
+        log.info("Your message: " + message);
     }
 }
