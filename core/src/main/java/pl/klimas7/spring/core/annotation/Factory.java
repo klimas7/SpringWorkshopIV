@@ -1,6 +1,8 @@
 package pl.klimas7.spring.core.annotation;
 
 import lombok.extern.java.Log;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -12,11 +14,14 @@ import java.util.Optional;
 @Component
 public class Factory {
     private Worker bestWorker;
+    @Autowired
+    @Qualifier(value = "lazyWorker")
     private Worker theMostLazyWorker;
 
     @Resource
     private Collection<Worker> workers;
 
+    @Autowired
     public void setBestWorker(Worker bestWorker) {
         this.bestWorker = bestWorker;
     }
@@ -33,7 +38,7 @@ public class Factory {
         workers.stream()
                 .filter(Objects::nonNull)
                 .forEach(Worker::doWork);
-
+        log.info("");
         checkAndDoWork(bestWorker, "The Best Worker");
         checkAndDoWork(theMostLazyWorker, "The Most Lazy Worker");
     }

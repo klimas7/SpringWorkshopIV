@@ -34,5 +34,9 @@ public class MainClass {
         log.info("//-----------------");
         var helloWorldBySetter = (HelloWorld) context.getBean("helloWorldSetter");
         helloWorldBySetter.print();
+
+        log.info("//-------------------------");
+        Factory factory = context.getBean("factory", Factory.class);
+        factory.doWork();
     }
 }
