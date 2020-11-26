@@ -1,7 +1,6 @@
 package pl.klimas7.spring.core.xml;
 
 import lombok.extern.java.Log;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
