@@ -16,5 +16,23 @@ public class MainClass {
         ApplicationContext context = new AnnotationConfigApplicationContext("pl.klimas7.spring.core.annotation");
         log.info("Bean definition count: " + context.getBeanDefinitionCount());
         Arrays.asList(context.getBeanDefinitionNames()).forEach(log::info);
+
+        log.info("//-----------------");
+        log.info("After creating context");
+
+        HelloWorld helloWorld = (HelloWorld) context.getBean("helloWorld");
+        helloWorld.print();
+
+        helloWorld.setMessage("test");
+        helloWorld.print();
+
+        log.info("//-----------------");
+        var helloWorld2 = (HelloWorld) context.getBean("helloWorld");
+        helloWorld2.print();
+
+
+        log.info("//-----------------");
+        var helloWorldBySetter = (HelloWorld) context.getBean("helloWorldSetter");
+        helloWorldBySetter.print();
     }
 }
