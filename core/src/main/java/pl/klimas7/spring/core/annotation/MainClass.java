@@ -13,7 +13,7 @@ public class MainClass {
     }
 
     public static void main(String[] args) {
-        ApplicationContext context = new AnnotationConfigApplicationContext("pl.klimas7.spring.annotation");
+        ApplicationContext context = new AnnotationConfigApplicationContext("pl.klimas7.spring.core.annotation");
         log.info("Bean definition count: " + context.getBeanDefinitionCount());
         Arrays.asList(context.getBeanDefinitionNames()).forEach(log::info);
     }
