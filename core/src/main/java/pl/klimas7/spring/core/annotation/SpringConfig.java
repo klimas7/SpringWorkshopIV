@@ -31,30 +31,30 @@ public class SpringConfig {
         return ctx.getBean("hardWorker", Worker.class);
     }
 
-    @Bean
-    public Worker bestWorkerOne() {
-        return ctx.getBean("hardWorker", Worker.class);
-    }
-
-    @Bean
-    public Worker bestWorkerTwo() {
-        return ctx.getBean("hardWorker", Worker.class);
-    }
-
-    @Bean
-    @Scope(value = "prototype")
-    public Worker lazyWorkerOne() {
-        return ctx.getBean("lazyWorker", Worker.class);
-    }
-
-    @Bean
-    @Scope(value = "prototype")
-    public Worker lazyWorkerTwo() {
-        return lazyWorkerOne();
-    }
-
-    @Bean
-    public Worker lazyWorkerThree() {
-        return null;
-    }
+//    @Bean
+//    public Worker bestWorkerOne() {
+//        return ctx.getBean("hardWorker", Worker.class);
+//    }
+//
+//    @Bean
+//    public Worker bestWorkerTwo() {
+//        return ctx.getBean("hardWorker", Worker.class);
+//    }
+//
+//    @Bean
+//    @Scope(value = "prototype")
+//    public Worker lazyWorkerOne() {
+//        return ctx.getBean("lazyWorker", Worker.class);
+//    }
+//
+//    @Bean
+//    @Scope(value = "prototype")
+//    public Worker lazyWorkerTwo() {
+//        return lazyWorkerOne();
+//    }
+//
+//    @Bean
+//    public Worker lazyWorkerThree() {
+//        return null;
+//    }
 }

@@ -4,6 +4,7 @@ import lombok.extern.java.Log;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.util.UUID;
 
 @Log
@@ -19,5 +20,10 @@ public class LazyWorker implements Worker {
     @Override
     public void doWork() {
         log.info("I'm lazy worker nr: " + uuid);
+    }
+
+    @PostConstruct
+    private void born() {
+        log.info("Born a lazy worker nr: " + uuid);
     }
 }
