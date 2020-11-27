@@ -1,6 +1,7 @@
 package pl.klimas7.spring.core.annotation;
 
 import lombok.extern.java.Log;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -10,7 +11,7 @@ import java.util.UUID;
 
 @Log
 @Component
-@Scope(value = "prototype")
+@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 @Lazy
 public class LazyWorker implements Worker {
     private String uuid;
