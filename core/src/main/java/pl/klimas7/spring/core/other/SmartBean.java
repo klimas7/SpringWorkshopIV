@@ -7,18 +7,38 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 @Log
 @Component
 public class SmartBean implements InitializingBean, DisposableBean  {
-    private final User user;
+    private final List<User> users;
     private User otherUser;
 
+    //Uwaga dodać drugi konstruktor i pokazać że jak sa dwa to jeden musi mieć Autowired
+
+    /*
+    //@Autowired
     private SmartBean(User user) {
-        this.user = user;
-        log.info("User: " + user);
+        this.users = Collections.singletonList(user);
+        log.info("Users: " + users);
     }
+
+    //@Autowired
+    private SmartBean(User user, User user2) {
+        this.users = Arrays.asList(user, user2);
+        log.info("Users: " + users);
+    }
+    */
+
+    //@Autowired
+    public SmartBean(List<User> users) {
+        this.users = users;//Arrays.asList(user, user2);
+        log.info("Users: " + users);
+    }
+
 
     //@Resource
     @Autowired
