@@ -28,4 +28,24 @@ public class RatingRetriever {
         log.info("Rating: " + rating.getRating());
         ratings.forEach(r -> log.info("Rating: " + r.getRating() + " (" + r.getClass().getSimpleName() + ")"));
     }
+
+    //DefaultListableBeanFactory.getBeanNamesForType --> this.allBeanNamesByType Tutaj jest zgodnie z alfabetem
+    //ClassPathBeanDefinitionScanner -> doScan
+
+    //If add Order
+    /*
+    DefaultListableBeanFactory.resolveMultipleBeans
+    1388
+			if (result instanceof List) {
+				if (((List<?>) result).size() > 1) {
+					Comparator<Object> comparator = adaptDependencyComparator(matchingBeans);
+					if (comparator != null) {
+						((List<?>) result).sort(comparator);
+					}
+				}
+			}
+	OrderComparator
+	AnnotationAwareOrderComparator
+     */
+
 }
