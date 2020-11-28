@@ -3,6 +3,8 @@ package pl.klimas7.spring.core.circular;
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+
 @Log
 @Component
 public class BeanA {
@@ -11,6 +13,10 @@ public class BeanA {
 
     public BeanA(BeanB beanB) {
         this.beanB = beanB;
+    }
+
+    @PostConstruct
+    public void print() {
         this.beanB.printMessage();
     }
 

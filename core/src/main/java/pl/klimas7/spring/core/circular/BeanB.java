@@ -4,6 +4,8 @@ import lombok.extern.java.Log;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+
 @Log
 @Component
 public class BeanB {
@@ -12,6 +14,10 @@ public class BeanB {
 
     public BeanB(@Lazy BeanA beanA) {
         this.beanA = beanA;
+    }
+
+    @PostConstruct
+    public void print() {
         this.beanA.printMessage();
     }
 
