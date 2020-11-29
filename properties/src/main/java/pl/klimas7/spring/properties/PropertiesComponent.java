@@ -42,6 +42,12 @@ public class PropertiesComponent {
     @Value("${klimas7.spring.null:#{null}}")
     private String pNull;
 
+    @Value("#{${klimas7.spring.p5} + 10}")
+    private String p5;
+
+    @Value("#{systemProperties['user.name']}")
+    private String userName;
+
     @PostConstruct
     private void printProperties() {
         Arrays.stream(this.getClass().getDeclaredFields())
