@@ -26,6 +26,7 @@ import java.util.Map;
 })
 public class PropertiesComponent {
     private final Environment env;
+    private final Klimas7SpringProperty klimas7SpringProperty;
 
     @Value("${klimas7.spring.p1}")
     private String p1;
@@ -72,8 +73,9 @@ public class PropertiesComponent {
     @Value("#{${klimas7.spring.p6a}}")
     private Map<String, String> p6a;
 
-    public PropertiesComponent(Environment env) {
+    public PropertiesComponent(Environment env, Klimas7SpringProperty klimas7SpringProperty) {
         this.env = env;
+        this.klimas7SpringProperty = klimas7SpringProperty;
     }
 
     @PostConstruct
@@ -84,6 +86,9 @@ public class PropertiesComponent {
 
         Arrays.stream(this.getClass().getDeclaredFields())
                 .forEach(this::printFieldValue);
+
+        log.info("--------------");
+        klimas7SpringProperty.printProperties();
     }
 
     @SneakyThrows
