@@ -4,6 +4,7 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.convert.Delimiter;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @Slf4j
 @Component
+@PropertySource("classpath:klimas7.properties")
 public class PropertiesComponent {
 
     @Value("${klimas7.spring.p1}")
@@ -33,6 +35,12 @@ public class PropertiesComponent {
 
     @Value("#{'${klimas7.spring.p3b}'.split('#')}") //SpEL
     private List<String> p3b;
+
+    @Value("${klimas7.spring.p4}")
+    private String p4;
+
+    @Value("${klimas7.spring.null:#{null}}")
+    private String pNull;
 
     @PostConstruct
     private void printProperties() {
