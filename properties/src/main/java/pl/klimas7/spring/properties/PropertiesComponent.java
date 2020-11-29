@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.convert.Delimiter;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -23,6 +24,7 @@ import java.util.List;
         @PropertySource("classpath:klimas7_2.properties")
 })
 public class PropertiesComponent {
+    private final Environment env;
 
     @Value("${klimas7.spring.p1}")
     private String p1;
@@ -63,9 +65,16 @@ public class PropertiesComponent {
     private String propertyFromClass;
     //StandardBeanExpressionResolver -> SpelExpression -> ... -> Indexer -> ReflectivePropertyAccessor:700
 
+    public PropertiesComponent(Environment env) {
+        this.env = env;
+    }
 
     @PostConstruct
     private void printProperties() {
+        log.info("userHome: " + env.getProperty("user.home"));
+        log.info("active profile: " + Arrays.asList(env.getActiveProfiles()));
+        log.info("default profile: " + Arrays.asList(env.getDefaultProfiles()));
+
         Arrays.stream(this.getClass().getDeclaredFields())
                 .forEach(this::printFieldValue);
     }
