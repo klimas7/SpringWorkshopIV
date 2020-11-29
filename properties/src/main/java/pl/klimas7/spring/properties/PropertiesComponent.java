@@ -58,7 +58,8 @@ public class PropertiesComponent {
     @Value("#{systemProperties['user.name']}")
     private String userName;
 
-    @Value("#{testProperty['property']}")
+    //    @Value("#{testProperty['property']}")
+    @Value("#{testProperty.property}")
     private String propertyFromClass;
     //StandardBeanExpressionResolver -> SpelExpression -> ... -> Indexer -> ReflectivePropertyAccessor:700
 
