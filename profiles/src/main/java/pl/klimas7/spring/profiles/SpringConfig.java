@@ -4,9 +4,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 
 @Configuration
-@PropertySource("classpath:application.properties")
-@PropertySource("classpath:application-dev.properties")
-@PropertySource("classpath:application-test.properties")
+//@PropertySource("classpath:application.properties")
+//@PropertySource("classpath:application-dev.properties")
+//@PropertySource("classpath:application-test.properties")
 public class SpringConfig {
 
     @Value("${extraMessage}")
