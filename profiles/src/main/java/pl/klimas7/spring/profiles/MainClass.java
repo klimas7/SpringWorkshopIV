@@ -16,5 +16,9 @@ public class MainClass {
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext("pl.klimas7.spring.profiles");
 
         Arrays.stream(applicationContext.getBeanDefinitionNames()).forEach(log::info);
+
+        log.info("----------------");
+        Message message = applicationContext.getBean("message", Message.class);
+        message.sendMessage();
     }
 }
