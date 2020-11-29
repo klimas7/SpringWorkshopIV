@@ -6,6 +6,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import java.util.Arrays;
 
+//-Dspring.profiles.active=test
 @Log
 public class MainClass {
     static {
@@ -16,6 +17,9 @@ public class MainClass {
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext("pl.klimas7.spring.profiles");
 
         Arrays.stream(applicationContext.getBeanDefinitionNames()).forEach(log::info);
+
+        log.info("ActiveProfiles: " + Arrays.toString(applicationContext.getEnvironment().getActiveProfiles()));
+        log.info("DefaultProfiles: " + Arrays.toString(applicationContext.getEnvironment().getDefaultProfiles()));
 
         log.info("----------------");
         Message message = applicationContext.getBean("message", Message.class);
