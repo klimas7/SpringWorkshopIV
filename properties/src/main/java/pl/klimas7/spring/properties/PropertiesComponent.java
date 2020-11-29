@@ -69,6 +69,9 @@ public class PropertiesComponent {
     @Value("#{propertyGenerator.generate('${klimas7.spring.p6}')}")
     private Map<String, String> p6;
 
+    @Value("#{${klimas7.spring.p6a}}")
+    private Map<String, String> p6a;
+
     public PropertiesComponent(Environment env) {
         this.env = env;
     }
