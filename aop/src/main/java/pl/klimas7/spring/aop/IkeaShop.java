@@ -9,6 +9,7 @@ public class IkeaShop implements Shop {
     @Override
     public void buy() {
         log.info("Kupuję piękną komode");
+        //throw new RuntimeException("upps!!");
     }
 
     @Override
