@@ -7,11 +7,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Aspect
 @Component
-public class SmartCustomer {
-
-    @Pointcut("execution(* pl.klimas7.spring.aop.Shop.buy(..))")
-    public void buy() {
-    }
+public class SmartCustomer implements Customer{
 
     @Before("buy()")
     public void chose() {

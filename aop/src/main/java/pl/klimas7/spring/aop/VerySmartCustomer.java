@@ -17,16 +17,8 @@ import static org.springframework.util.StringUtils.isEmpty;
 @Slf4j
 @Aspect
 @Component
-public class VerySmartCustomer {
+public class VerySmartCustomer implements Customer{
     Map<String, Integer> thingsCount = new HashMap<>();
-
-    @Pointcut("execution(* pl.klimas7.spring.aop.Shop.buy(..))")
-    public void buy() {
-    }
-
-    @Pointcut("execution(* pl.klimas7.spring.aop.Shop.addToBasket(String)) && args(name)")
-    public void addToBasket(String name) {
-    }
 
     @Before(value = "addToBasket(name)", argNames = "name")
     public void countThings(String name) {
