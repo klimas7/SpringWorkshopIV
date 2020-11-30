@@ -12,6 +12,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+import static org.springframework.util.StringUtils.isEmpty;
+
 @Slf4j
 @Aspect
 @Component
@@ -36,9 +38,30 @@ public class VerySmartCustomer {
         return Optional.ofNullable(thingsCount.get(name)).orElse(0);
     }
 
-    public void showCounts() {
+    void showCounts() {
         thingsCount.forEach((key, value) -> log.info(key + " " + value));
     }
+
+    @Around(value = "addToBasket(name)", argNames = "pjp,name")
+    public Object aroundAddToBasket(ProceedingJoinPoint pjp, String name) {
+        if (isEmpty(name)) {
+            return null;
+        }
+        Object retValue = null;
+        try {
+            String newName = proceedName(name);
+            retValue = pjp.proceed(new String[]{newName});
+        } catch (Throwable throwable) {
+            log.error("error", throwable);
+        }
+
+        return retValue;
+    }
+
+    private String proceedName(String name) {
+        return name.toUpperCase().trim();
+    }
+
 
     @Around("buy()")
     public Object shopping(ProceedingJoinPoint pjp) {

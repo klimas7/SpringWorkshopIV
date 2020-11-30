@@ -18,13 +18,15 @@ public class ExecutionsShopping {
     public void shopping() {
         shop.buy();
 
+        shop.addToBasket("KrzEsło");
         shop.addToBasket("Krzesło");
-        shop.addToBasket("Krzesło");
-        shop.addToBasket("Krzesło");
-        shop.addToBasket("Krzesło");
+        shop.addToBasket("KrzeSło");
+        shop.addToBasket("  Krzesło");
+        shop.addToBasket("StóŁ");
         shop.addToBasket("Stół");
         shop.addToBasket("Kubek");
         shop.addToBasket("Kubek ");
+        shop.addToBasket(null);
 
         verySmartCustomer.showCounts();
 
