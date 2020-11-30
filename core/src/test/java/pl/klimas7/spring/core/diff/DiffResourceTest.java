@@ -17,11 +17,17 @@ public class DiffResourceTest {
     //private Circle shape;
     //private Shape square;
     @Qualifier("triangle")
-    private Shape shape;
+    private Shape square;
 
     @Test
     public void startContextTest() {
-        log.info(shape.description());
-        //log.info(square.description());
+        //log.info(shape.description());
+        log.info(square.description());
     }
+
+    /**
+     * - name
+     * - Type
+     * - Qualifier
+     */
 }
