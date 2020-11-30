@@ -27,5 +27,7 @@ public class ExecutionsShopping {
         shop.addToBasket("Kubek ");
 
         verySmartCustomer.showCounts();
+
+        ((SelfServiceShop)shop).selfBuy();
     }
 }
