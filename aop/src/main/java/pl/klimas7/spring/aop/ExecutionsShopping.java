@@ -7,9 +7,11 @@ import javax.annotation.PostConstruct;
 @Component
 public class ExecutionsShopping {
     private Shop shop;
+    private VerySmartCustomer verySmartCustomer;
 
-    public ExecutionsShopping(Shop shop) {
+    public ExecutionsShopping(Shop shop, VerySmartCustomer verySmartCustomer) {
         this.shop = shop;
+        this.verySmartCustomer = verySmartCustomer;
     }
 
     @PostConstruct
@@ -23,5 +25,7 @@ public class ExecutionsShopping {
         shop.addToBasket("Stół");
         shop.addToBasket("Kubek");
         shop.addToBasket("Kubek ");
+
+        verySmartCustomer.showCounts();
     }
 }
