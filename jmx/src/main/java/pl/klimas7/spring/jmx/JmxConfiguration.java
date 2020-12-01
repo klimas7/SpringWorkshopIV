@@ -3,6 +3,8 @@ package pl.klimas7.spring.jmx;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jmx.export.MBeanExporter;
+import org.springframework.jmx.export.assembler.InterfaceBasedMBeanInfoAssembler;
+import org.springframework.jmx.export.assembler.MethodExclusionMBeanInfoAssembler;
 import org.springframework.jmx.export.assembler.MethodNameBasedMBeanInfoAssembler;
 
 import java.util.HashMap;
@@ -48,6 +50,21 @@ public class JmxConfiguration {
 //    }
 
     @Bean
+    public MBeanExporter mBeanExporter(MessageManageOperation messageManageOperation,
+                                       MethodNameBasedMBeanInfoAssembler assembler,
+                                       MethodExclusionMBeanInfoAssembler exclusionAssembler,
+                                       InterfaceBasedMBeanInfoAssembler interfaceAssembly) {
+        MBeanExporter mBeanExporter = new MBeanExporter();
+        Map<String, Object> beans = new HashMap<>();
+        beans.put("jmxApplication:name=MessageManageOperation", messageManageOperation);
+        mBeanExporter.setBeans(beans);
+//        mBeanExporter.setAssembler(assembler);
+//        mBeanExporter.setAssembler(exclusionAssembler);
+        mBeanExporter.setAssembler(interfaceAssembly);
+        return mBeanExporter;
+    }
+
+    @Bean
     public MethodNameBasedMBeanInfoAssembler assembler() {
         MethodNameBasedMBeanInfoAssembler methodNameBasedMBeanInfoAssembler = new MethodNameBasedMBeanInfoAssembler();
         // first solution
@@ -63,14 +80,16 @@ public class JmxConfiguration {
     }
 
     @Bean
-    public MBeanExporter mBeanExporter(MessageManageOperation messageManageOperation,
-                                       MethodNameBasedMBeanInfoAssembler assambler) {
-        MBeanExporter mBeanExporter = new MBeanExporter();
-        Map<String, Object> beans = new HashMap<>();
-        beans.put("jmxApplication:name=MessageManageOperation", messageManageOperation);
-        mBeanExporter.setBeans(beans);
-        mBeanExporter.setAssembler(assambler);
-        return mBeanExporter;
+    public MethodExclusionMBeanInfoAssembler exclusionAssembler() {
+        MethodExclusionMBeanInfoAssembler methodExclusionMBeanInfoAssembler = new MethodExclusionMBeanInfoAssembler();
+        methodExclusionMBeanInfoAssembler.setIgnoredMethods("setPrivateMessage");
+        return methodExclusionMBeanInfoAssembler;
     }
 
+    @Bean
+    public InterfaceBasedMBeanInfoAssembler interfaceAssembler() {
+        InterfaceBasedMBeanInfoAssembler interfaceBasedMBeanInfoAssembler = new InterfaceBasedMBeanInfoAssembler();
+        interfaceBasedMBeanInfoAssembler.setManagedInterfaces(MessageManageOperation.class);
+        return interfaceBasedMBeanInfoAssembler;
+    }
 }
