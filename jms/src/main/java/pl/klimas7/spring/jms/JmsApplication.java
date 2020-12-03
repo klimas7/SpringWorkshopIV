@@ -9,3 +9,6 @@ public class JmsApplication {
         SpringApplication.run(JmsApplication.class);
     }
 }
+/*
+https://youtu.be/0V9Ua538jMI?t=222
+ */
