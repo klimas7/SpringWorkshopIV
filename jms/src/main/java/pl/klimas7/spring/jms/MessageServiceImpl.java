@@ -13,7 +13,7 @@ import javax.jms.TextMessage;
 public class MessageServiceImpl implements MessageService {
 
     private static final String QUEUE_PLAIN_TEXT = "message.queue.plainText";
-    private static final String QUEUE_OBJECT = "message.queue.object";
+    public static final String QUEUE_OBJECT = "message.queue.object";
 
     private final JmsOperations jmsOperations;
 
@@ -35,11 +35,13 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     public void sendMessageInfo(MessageInfo messageInfo) {
-        jmsOperations.convertAndSend(QUEUE_OBJECT, messageInfo);
+        //jmsOperations.convertAndSend(QUEUE_OBJECT, messageInfo);
+        jmsOperations.convertAndSend(messageInfo);
     }
 
     @Override
     public MessageInfo getMessageInfo() {
-        return (MessageInfo) jmsOperations.receiveAndConvert(QUEUE_OBJECT);
+        //return (MessageInfo) jmsOperations.receiveAndConvert(QUEUE_OBJECT);
+        return (MessageInfo) jmsOperations.receiveAndConvert();
     }
 }
