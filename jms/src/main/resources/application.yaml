@@ -1,0 +1,5 @@
+spring:
+  activemq:
+    broker-url: "tcp://ovh.klimas7.pl:61616"
+    password: k7admin
+    user: admin
