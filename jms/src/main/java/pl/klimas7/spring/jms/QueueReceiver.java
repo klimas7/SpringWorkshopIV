@@ -7,8 +7,7 @@ import org.springframework.messaging.handler.annotation.Headers;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
-import static pl.klimas7.spring.jms.QueueName.OBJECT;
-import static pl.klimas7.spring.jms.QueueName.TEXT;
+import static pl.klimas7.spring.jms.QueueName.*;
 
 @Slf4j
 @Component
@@ -26,7 +25,19 @@ public class QueueReceiver {
         logHeaders(headers);
     }
 
+    @JmsListener(destination = TOPIC, containerFactory = "myTopicFactory", concurrency = "2-4")
+    public void receiveTopicMessage(@Payload String topic,
+                                    @Headers MessageHeaders headers) throws InterruptedException {
+
+        log.info("received Topic <" + topic + ">");
+        logHeaders(headers);
+        log.info("slepp ...");
+        Thread.sleep(10000);
+        Thread.sleep(10000);
+    }
+
     private void logHeaders(MessageHeaders headers) {
+        log.info("---------------------------------------------------------------");
         headers.forEach((key, value) -> log.info("Header: " + key + " : " + value));
     }
 }

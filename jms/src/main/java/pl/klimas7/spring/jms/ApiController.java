@@ -29,6 +29,13 @@ public class ApiController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
+    @PostMapping("/topic")
+    public ResponseEntity<Void>  sendTopic(@RequestParam("topic") String topic) {
+        log.info("Send topic info: " + topic);
+        messageService.sendTopic(topic);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
     @GetMapping("/text")
     public String getText() {
         log.info("Get text");

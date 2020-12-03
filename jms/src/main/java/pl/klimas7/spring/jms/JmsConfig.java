@@ -47,6 +47,15 @@ public class JmsConfig {
     }
 
     @Bean
+    public JmsListenerContainerFactory<?> myTopicFactory(ConnectionFactory connectionFactory,
+                                                         DefaultJmsListenerContainerFactoryConfigurer configurer) {
+        DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
+        configurer.configure(factory, connectionFactory);
+        factory.setPubSubDomain(true);
+        return factory;
+    }
+
+    @Bean
     public MessageConverter messageConverter() {
         MappingJackson2MessageConverter mappingJackson2MessageConverter = new MappingJackson2MessageConverter();
         mappingJackson2MessageConverter.setTypeIdPropertyName("object-type");

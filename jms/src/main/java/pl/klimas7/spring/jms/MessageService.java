@@ -5,4 +5,5 @@ public interface MessageService {
     String getMessage();
     void sendMessageInfo(MessageInfo messageInfo);
     MessageInfo getMessageInfo();
+    void sendTopic(String topic);
 }
