@@ -28,7 +28,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>13</java.version>
 
-        <spring.version>5.2.11.RELEASE</spring.version>
+        <spring.version>5.2.10.RELEASE</spring.version>
         <spring.boot.version>2.3.5.RELEASE</spring.boot.version>
 
         <lombok.version>1.18.16</lombok.version>
@@ -36,6 +36,7 @@
         <javax.inject.version>1</javax.inject.version>
         <junit.version>5.7.0</junit.version>
         <aspectj.version>1.9.6</aspectj.version>
+        <activemq.version>5.15.11</activemq.version>
     </properties>
 
     <dependencyManagement>
@@ -72,6 +73,24 @@
                 <groupId>org.aspectj</groupId>
                 <artifactId>aspectjweaver</artifactId>
                 <version>${aspectj.version}</version>
+            </dependency>
+
+            <!-- jms -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-activemq</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>activemq-broker</artifactId>
+                <version>${activemq.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.fasterxml.jackson.core</groupId>
+                        <artifactId>jackson-databind</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <!-- test -->
