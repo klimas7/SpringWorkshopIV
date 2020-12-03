@@ -8,13 +8,12 @@ import org.springframework.stereotype.Component;
 import javax.jms.Message;
 import javax.jms.TextMessage;
 
+import static pl.klimas7.spring.jms.QueueName.OBJECT;
+import static pl.klimas7.spring.jms.QueueName.TEXT;
+
 @Slf4j
 @Component
 public class MessageServiceImpl implements MessageService {
-
-    private static final String QUEUE_PLAIN_TEXT = "message.queue.plainText";
-    public static final String QUEUE_OBJECT = "message.queue.object";
-
     private final JmsOperations jmsOperations;
 
     public MessageServiceImpl(JmsOperations jmsOperations) {
@@ -23,25 +22,25 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     public void sendMessage(String message) {
-        jmsOperations.send(QUEUE_PLAIN_TEXT, session -> session.createTextMessage(message));
+        jmsOperations.convertAndSend(TEXT, message);
     }
 
     @SneakyThrows
     @Override
     public String getMessage() {
-        Message receive = jmsOperations.receive(QUEUE_PLAIN_TEXT);
+        Message receive = jmsOperations.receive(TEXT);
         return  ((TextMessage)receive).getText();
     }
 
     @Override
     public void sendMessageInfo(MessageInfo messageInfo) {
-        //jmsOperations.convertAndSend(QUEUE_OBJECT, messageInfo);
-        jmsOperations.convertAndSend(messageInfo);
+        jmsOperations.convertAndSend(OBJECT, messageInfo);
+        //jmsOperations.convertAndSend(messageInfo);
     }
 
     @Override
     public MessageInfo getMessageInfo() {
-        //return (MessageInfo) jmsOperations.receiveAndConvert(QUEUE_OBJECT);
-        return (MessageInfo) jmsOperations.receiveAndConvert();
+        return (MessageInfo) jmsOperations.receiveAndConvert(OBJECT);
+        //return (MessageInfo) jmsOperations.receiveAndConvert();
     }
 }
