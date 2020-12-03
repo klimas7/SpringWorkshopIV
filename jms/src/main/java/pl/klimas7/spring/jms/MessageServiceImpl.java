@@ -1,17 +1,34 @@
 package pl.klimas7.spring.jms;
 
+import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.jms.core.JmsOperations;
 import org.springframework.stereotype.Component;
 
+import javax.jms.Message;
+import javax.jms.TextMessage;
+
+@Slf4j
 @Component
 public class MessageServiceImpl implements MessageService {
-    @Override
-    public void sendMessage(String message) {
 
+    private static final String QUEUE_PLAIN_TEXT = "message.queue.plainText";
+    private final JmsOperations jmsOperations;
+
+    public MessageServiceImpl(JmsOperations jmsOperations) {
+        this.jmsOperations = jmsOperations;
     }
 
     @Override
+    public void sendMessage(String message) {
+        jmsOperations.send(QUEUE_PLAIN_TEXT, session -> session.createTextMessage(message));
+    }
+
+    @SneakyThrows
+    @Override
     public String getMessage() {
-        return null;
+        Message receive = jmsOperations.receive(QUEUE_PLAIN_TEXT);
+        return  ((TextMessage)receive).getText();
     }
 
     @Override
