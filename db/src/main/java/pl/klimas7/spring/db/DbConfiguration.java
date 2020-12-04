@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+import org.springframework.jndi.JndiObjectFactoryBean;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -30,6 +31,18 @@ public class DbConfiguration {
                 .addScript("classpath:scripts/test-data.sql")
                 .build();
     }
+
+    @Bean
+    @Profile("prod")
+    @Lazy
+    public DataSource dataSource() {
+        JndiObjectFactoryBean jndiObjectFactoryBean = new JndiObjectFactoryBean();
+        jndiObjectFactoryBean.setJndiName("jdbc/SpringDS");
+        jndiObjectFactoryBean.setResourceRef(true);
+        jndiObjectFactoryBean.setProxyInterface(DataSource.class);
+        return (DataSource) jndiObjectFactoryBean.getObject();
+    }
+
 
     @Bean
     @Lazy
