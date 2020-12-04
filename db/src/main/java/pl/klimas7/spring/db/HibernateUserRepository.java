@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import pl.klimas7.spring.db.model.User;
 
 import javax.persistence.criteria.CriteriaQuery;
+import javax.transaction.Transactional;
 import java.io.Serializable;
 import java.util.List;
 
@@ -24,12 +25,20 @@ public class HibernateUserRepository implements UserRepository {
 
     @Override
     public List<User> findRecent() {
-        return null;
+        return findRecent(3);
     }
 
     @Override
     public List<User> findRecent(int count) {
-        return null;
+        var session = getCurrentSession();
+        var cb = session.getCriteriaBuilder();
+        var query = cb.createQuery(User.class);
+
+        var root = query.from(User.class);
+        query.orderBy(cb.desc(root.get("age")));
+        return session.createQuery(query)
+                .setMaxResults(count)
+                .getResultList();
     }
 
     @Override
@@ -44,6 +53,7 @@ public class HibernateUserRepository implements UserRepository {
     }
 
     @Override
+    @Transactional
     public void delete(long id) {
         getCurrentSession().delete(findOne(id));
     }
