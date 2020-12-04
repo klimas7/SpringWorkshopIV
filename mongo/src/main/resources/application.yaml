@@ -5,3 +5,12 @@ spring:
       username: admin
       password: k7admin
       authentication-database: admin
+
+logging:
+  level:
+    org:
+      springframework:
+        data: debug
+        mongodb:
+          core:
+            MongoTemplate: trace

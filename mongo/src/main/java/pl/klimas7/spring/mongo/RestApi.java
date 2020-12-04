@@ -43,6 +43,11 @@ public class RestApi {
     public List<User> getUserByName(@PathVariable String firstName) {
         return userRepository.findByFirstName(firstName);
     }
+
+    @GetMapping("/oldestUser")
+    public User getOldestUser() {
+        return userRepository.getOldestUser();
+    }
 }
 
 /*
@@ -51,6 +56,8 @@ POST http://localhost:8080/api/createUsers
 GET http://localhost:8080/api/users
 
 GET http://localhost:8080/api/user/John
+
+GET http://localhost:8080/api/oldestUser
  */
 
 /*
