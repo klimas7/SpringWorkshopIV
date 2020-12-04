@@ -9,3 +9,8 @@ public class CacheApplication {
         SpringApplication.run(CacheApplication.class);
     }
 }
+
+/*
+GET http://localhost:8080/api/cache/John/55
+
+ */
