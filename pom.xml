@@ -39,6 +39,8 @@
         <cache-api.vaersion>1.1.1</cache-api.vaersion>
         <ehcache.version>3.9.0</ehcache.version>
         <h2.version>1.4.200</h2.version>
+        <dbcp.version>2.6.0</dbcp.version>
+        <postgresql.version>42.2.18</postgresql.version>
     </properties>
 
     <dependencyManagement>
@@ -148,7 +150,16 @@
                 <artifactId>spring-boot-starter-data-jpa</artifactId>
                 <version>${spring.boot.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-dbcp2</artifactId>
+                <version>${dbcp.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>${postgresql.version}</version>
+            </dependency>
             <!-- test -->
             <dependency>
                 <groupId>org.springframework</groupId>
