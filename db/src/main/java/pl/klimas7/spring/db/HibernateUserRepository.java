@@ -8,8 +8,8 @@ import java.util.List;
 @Repository("hibernate")
 public class HibernateUserRepository implements UserRepository {
     @Override
-    public long count() {
-        return 0;
+    public Long count() {
+        return 0L;
     }
 
     @Override

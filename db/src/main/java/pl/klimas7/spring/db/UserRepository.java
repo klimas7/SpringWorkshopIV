@@ -5,7 +5,7 @@ import pl.klimas7.spring.db.model.User;
 import java.util.List;
 
 public interface UserRepository {
-    long count();
+    Long count();
     List<User> findRecent();
     List<User> findRecent(int count);
     User findOne(long id);

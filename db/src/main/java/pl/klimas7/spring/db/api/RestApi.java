@@ -38,3 +38,9 @@ public class RestApi {
         userRepository.delete(id);
     }
 }
+
+/*
+GET http://localhost:8080/api/count
+
+POST http://localhost:8080/api/John/Rambo
+ */
