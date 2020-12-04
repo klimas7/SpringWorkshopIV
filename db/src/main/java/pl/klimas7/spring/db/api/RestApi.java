@@ -13,7 +13,7 @@ import java.util.List;
 public class RestApi {
     private final UserRepository userRepository;
 
-    public RestApi(@Qualifier("jdbc")  UserRepository userRepository) {
+    public RestApi(@Qualifier("hibernate")  UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
@@ -50,4 +50,6 @@ GET http://localhost:8080/api/count
 POST http://localhost:8080/api/John/Rambo
 
 GET http://localhost:8080/api/findRecent
+
+GET http://localhost:8080/api/findRecent/10
  */
