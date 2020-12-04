@@ -18,7 +18,6 @@
         <module>jmx</module>
         <module>events</module>
         <module>jms</module>
-        <module>spring-boot</module>
         <module>mongo</module>
         <module>db</module>
         <module>cache</module>
@@ -39,6 +38,7 @@
         <activemq.version>5.15.11</activemq.version>
         <cache-api.vaersion>1.1.1</cache-api.vaersion>
         <ehcache.version>3.9.0</ehcache.version>
+        <h2.version>1.4.200</h2.version>
     </properties>
 
     <dependencyManagement>
@@ -130,6 +130,23 @@
                 <groupId>org.ehcache</groupId>
                 <artifactId>ehcache</artifactId>
                 <version>${ehcache.version}</version>
+            </dependency>
+
+            <!-- db -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jdbc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>${h2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-jpa</artifactId>
+                <version>${spring.boot.version}</version>
             </dependency>
 
             <!-- test -->
