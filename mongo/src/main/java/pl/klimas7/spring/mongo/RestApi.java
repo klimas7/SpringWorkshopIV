@@ -4,10 +4,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.time.Month;
@@ -41,12 +38,19 @@ public class RestApi {
     public List<User> getUsers() {
         return userRepository.findAll();
     }
+
+    @GetMapping("/user/{firstName}")
+    public List<User> getUserByName(@PathVariable String firstName) {
+        return userRepository.findByFirstName(firstName);
+    }
 }
 
 /*
 POST http://localhost:8080/api/createUsers
 
 GET http://localhost:8080/api/users
+
+GET http://localhost:8080/api/user/John
  */
 
 /*

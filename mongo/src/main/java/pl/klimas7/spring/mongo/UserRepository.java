@@ -24,4 +24,7 @@ public class UserRepository {
         return mongoOperations.findAll(User.class);
     }
 
+    public List<User> findByFirstName(String firstName) {
+        return userMongoRepository.findUserByFirstName(firstName);
+    }
 }
