@@ -1,0 +1,7 @@
+spring:
+  data:
+    mongodb:
+      host: ovh.klimas7.pl
+      username: admin
+      password: k7admin
+      authentication-database: admin
