@@ -27,6 +27,11 @@ public class RestApi {
         return userRepository.findRecent();
     }
 
+    @GetMapping("/findRecent/{count}")
+    public List<User> findRecent(@PathVariable Integer count) {
+        return userRepository.findRecent(count);
+    }
+
     @PostMapping("/add/{firstName}/{lastName}")
     public User addUser(@PathVariable String firstName, @PathVariable String lastName) {
         User user = new User(null, firstName, lastName, 10, LocalDateTime.now());
@@ -43,4 +48,6 @@ public class RestApi {
 GET http://localhost:8080/api/count
 
 POST http://localhost:8080/api/John/Rambo
+
+GET http://localhost:8080/api/findRecent
  */
