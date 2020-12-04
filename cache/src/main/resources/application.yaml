@@ -1,11 +1,16 @@
+#spring:
+#  cache:
+#    redis:
+#      time-to-live: 30000
+#  redis:
+#    host: ovh.klimas7.pl
+#    port: 6379
+#    password: k7admin
+
 spring:
   cache:
-    redis:
-      time-to-live: 30000
-  redis:
-    host: ovh.klimas7.pl
-    port: 6379
-    password: k7admin
+    jcache:
+      config: classpath:ehcache.xml
 
 logging:
   level:

@@ -37,6 +37,8 @@
         <junit.version>5.7.0</junit.version>
         <aspectj.version>1.9.6</aspectj.version>
         <activemq.version>5.15.11</activemq.version>
+        <cache-api.vaersion>1.1.1</cache-api.vaersion>
+        <ehcache.version>3.9.0</ehcache.version>
     </properties>
 
     <dependencyManagement>
@@ -116,6 +118,18 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-data-rest</artifactId>
                 <version>${spring.boot.version}</version>
+            </dependency>
+
+            <!-- ehcache -->
+            <dependency>
+                <groupId>javax.cache</groupId>
+                <artifactId>cache-api</artifactId>
+                <version>${cache-api.vaersion}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ehcache</groupId>
+                <artifactId>ehcache</artifactId>
+                <version>${ehcache.version}</version>
             </dependency>
 
             <!-- test -->
