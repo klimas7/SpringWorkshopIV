@@ -15,4 +15,5 @@ public class CacheApplication {
 /*
 GET http://localhost:8080/api/cache/John/55
 
+DELETE http://localhost:8080/api/cache/evict
  */
