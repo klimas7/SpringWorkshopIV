@@ -18,4 +18,10 @@ public class UserRepository {
     public List<User> save(Iterable<User> users) {
         return userMongoRepository.saveAll(users);
     }
+
+    public List<User> findAll() {
+//        return userMongoRepository.findAll();
+        return mongoOperations.findAll(User.class);
+    }
+
 }
