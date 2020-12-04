@@ -1,15 +1,18 @@
 package pl.klimas7.spring.db;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 import pl.klimas7.spring.db.model.User;
 
+import javax.transaction.Transactional;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Slf4j
 @AllArgsConstructor
 @Repository("jdbc")
 public class JdbcUserRepository implements UserRepository {
@@ -36,8 +39,13 @@ public class JdbcUserRepository implements UserRepository {
     }
 
     @Override
+    @Transactional
     public User save(User user) {
         Long id = insertUserAndReturnId(user);
+        log.info("--------------------------");
+        if (true) {
+            throw new RuntimeException("ups!!!");
+        }
         return new User(id, user.getFirstName(), user.getLastName(), user.getAge(), user.getBirthDate());
     }
 
