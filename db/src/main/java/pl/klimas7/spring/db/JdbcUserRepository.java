@@ -43,7 +43,7 @@ public class JdbcUserRepository implements UserRepository {
     public User save(User user) {
         Long id = insertUserAndReturnId(user);
         log.info("--------------------------");
-        if (true) {
+        if (false) {
             throw new RuntimeException("ups!!!");
         }
         return new User(id, user.getFirstName(), user.getLastName(), user.getAge(), user.getBirthDate());
