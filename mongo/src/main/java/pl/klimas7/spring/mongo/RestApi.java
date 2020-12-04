@@ -48,6 +48,11 @@ public class RestApi {
     public User getOldestUser() {
         return userRepository.getOldestUser();
     }
+
+    @GetMapping("/userAgeCounts")
+    public List<AgeCounts> getUserAgeCounts() {
+        return userRepository.getUserAgeCounts();
+    }
 }
 
 /*
@@ -58,6 +63,8 @@ GET http://localhost:8080/api/users
 GET http://localhost:8080/api/user/John
 
 GET http://localhost:8080/api/oldestUser
+
+GET http://localhost:8080/api/userAgeCounts
  */
 
 /*
