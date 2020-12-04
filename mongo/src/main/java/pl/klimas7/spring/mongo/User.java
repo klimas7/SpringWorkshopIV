@@ -7,7 +7,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 
-@AllArgsConstructor
 @Data
 @Document
 public class User {
@@ -17,4 +16,11 @@ public class User {
     private String secondName;
     private Integer age;
     private LocalDateTime birthDate;
+
+    public User(String firstName, String secondName, Integer age, LocalDateTime birthDate) {
+        this.firstName = firstName;
+        this.secondName = secondName;
+        this.age = age;
+        this.birthDate = birthDate;
+    }
 }
